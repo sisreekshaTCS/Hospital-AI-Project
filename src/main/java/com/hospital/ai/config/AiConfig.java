@@ -12,6 +12,13 @@ import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.googleai.GoogleAiEmbeddingModel;
 import dev.langchain4j.model.googleai.GoogleAiGeminiChatModel;
 
+/**
+ * Configuration class for setting up 
+ * 1. Chat language AI model (Gemini) and
+ * 2. embedding AI model and 
+ * 3. Chat memory provider.
+ */
+
 @Configuration
 public class AiConfig {
 	
@@ -21,10 +28,14 @@ public class AiConfig {
     @Bean
     public GoogleAiGeminiChatModel chatLanguageModel() {
         return GoogleAiGeminiChatModel.builder()
-                .apiKey(apiKey)
+        		.apiKey(apiKey)
                 .modelName("gemini-3.6-flash")
                 .temperature(0.0)
                 .timeout(Duration.ofSeconds(30))
+                .sendThinking(true)    // Preserves reasoning state on multi-turn function calls
+                .returnThinking(true)  // Captures thought signatures returned by Gemini
+                .logRequests(true)
+                .logResponses(true)
                 .build();
     }
 

@@ -12,6 +12,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Represents a prescription record for a patient.
+ * 
+ * This entity is mapped to the "prescriptions" table in the database.
+ * It contains information about the prescribed medication, dosage, frequency,
+ * and the date it was prescribed. The "isActive" field indicates whether
+ * the prescription is currently active or has been discontinued.
+ */
+
 @Entity
 @Data
 @NoArgsConstructor
